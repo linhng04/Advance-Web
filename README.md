@@ -1,5 +1,5 @@
-#Realtime-Update Blog
-##Thông tin sinh viên
+# Realtime-Update Blog
+## Thông tin sinh viên
 
 ## Giới thiệu dự án
 
