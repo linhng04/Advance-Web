@@ -1,6 +1,7 @@
 # Realtime-Update Blog
 ## Thông tin sinh viên
-
+* **Họ và tên:** Nguyễn Lê Phương Linh
+* **MSSV:** 22014068 
 ## Giới thiệu dự án
 
 **Reverb** là một nền tảng blog cộng đồng được xây dựng bằng Laravel Framework, nơi mọi người dùng đều là trung tâm của sự tương tác. Khác với các trang web truyền thống, dự án này không có vai trò "Quản trị viên"; thay vào đó, nó trao quyền cho mỗi người dùng để trở thành người sáng tạo nội dung và tham gia vào các cuộc thảo luận.
@@ -26,7 +27,7 @@ Hệ thống được thiết kế để tất cả người dùng đã xác th�
 *   **Bình luận:** Người dùng đã đăng nhập có thể để lại bình luận trên bất kỳ bài viết nào để tham gia thảo luận.
 *   **Quản lý bình luận cá nhân:** Người dùng có thể xóa các bình luận do chính mình đã viết.
 
-## Sơ đồ cấu 
+## Sơ đồ cấu trúc
 # Mô tả sơ đồ cơ sở dữ liệu
 ### a. Bảng `users` (Người dùng)
 
@@ -60,4 +61,69 @@ Bảng này lưu trữ tất cả các bình luận của người dùng cho cá
 *   `post_id` **(FK)**: Khóa ngoại, liên kết đến cột `id` của bảng `posts`. Nó cho biết bình luận này thuộc về bài viết nào.
 *   `created_at`, `updated_at`: Dấu thời gian tạo và cập nhật bình luận.
 
+## Sơ đồ thuật toán
 
+### Thuật toán Người dùng (User)
+
+**Chi tiết các bước:**
+
+#### a. Đăng ký tài khoản (`RegisteredUserController@store`)
+1.  Nhận yêu cầu từ form đăng ký.
+2.  Xác thực dữ liệu (`$request->validate()`).
+3.  Mã hóa mật khẩu (`Hash::make()`) và tạo người dùng (`User::create()`).
+4.  Kích hoạt sự kiện `Registered` và đăng nhập người dùng (`Auth::login()`).
+5.  Chuyển hướng đến trang `dashboard`.
+
+#### b. Đăng nhập (`AuthenticatedSessionController@store`)
+1.  Nhận yêu cầu từ form đăng nhập.
+2.  Xác thực request (`$request->authenticate()`), bao gồm `RateLimiter` và `Auth::attempt()`.
+3.  Tạo lại session (`session()->regenerate()`) nếu thành công.
+4.  Chuyển hướng đến trang `dashboard`.
+
+#### c. Đăng xuất (`AuthenticatedSessionController@destroy`)
+1.  Nhận yêu cầu đăng xuất.
+2.  Đăng xuất guard (`Auth::guard('web')->logout()`).
+3.  Vô hiệu hóa session (`session()->invalidate()`) và tạo lại token (`regenerateToken()`).
+4.  Chuyển hướng đến trang chủ (`/`).
+
+---
+
+### Thuật toán Bài viết (Blog)
+
+**Chi tiết các bước:**
+
+#### a. Thêm Bài viết (`ProfileController@Store`)
+1.  Yêu cầu được xử lý qua middleware `auth`.
+2.  Xác thực dữ liệu (`$request->validate()`).
+3.  Tạo bài viết (`Blog::create()`), gán `user_id` bằng `auth()->id()`.
+4.  Phát sóng sự kiện `BlogCreatedEvent`.
+5.  Chuyển hướng lại (`redirect()->back()`) với thông báo.
+
+#### b. Sửa Bài viết (`ProfileController@updateblog`)
+1.  Yêu cầu được xử lý qua middleware `auth`.
+2.  **Kiểm tra quyền sở hữu:** Tìm bài viết bằng `where('id', $id)->where('user_id', Auth::id())`.
+3.  Xác thực dữ liệu mới (`$request->validate()`).
+4.  Cập nhật bài viết (`$blog->update()`).
+5.  Phát sóng sự kiện `BlogUpdatedEvent`.
+6.  Chuyển hướng lại (`redirect()->back()`) với thông báo.
+
+#### c. Xóa Bài viết (`ProfileController@delete`)
+1.  Yêu cầu được xử lý qua middleware `auth`.
+2.  **Kiểm tra quyền sở hữu:** Tìm bài viết bằng `where('id', $id)->where('user_id', Auth::id())`.
+3.  Xóa bài viết (`$blog->delete()`).
+4.  Phát sóng sự kiện `BlogDeleted`.
+5.  Chuyển hướng lại (`redirect()->back()`) với thông báo.
+
+---
+
+### Thuật toán Bình luận (Comment)
+
+**Chi tiết các bước:**
+
+#### a. Thêm Bình luận (`ProfileController@storeComment`)
+1.  Yêu cầu được xử lý qua middleware `auth`.
+2.  Xác thực dữ liệu (`$request->validate()`).
+3.  Tạo bình luận (`Comment::create()`), gán `user_id` và `blog_id`.
+4.  Chuyển hướng đến trang bài viết (`route('blog.show')`).
+
+## Giao diện thực tế
