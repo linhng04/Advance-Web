@@ -28,7 +28,6 @@ Hệ thống được thiết kế để tất cả người dùng đã xác th�
 *   **Quản lý bình luận cá nhân:** Người dùng có thể xóa các bình luận do chính mình đã viết.
 
 ## Sơ đồ cấu trúc
-# Mô tả sơ đồ cơ sở dữ liệu
 ### a. Bảng `users` (Người dùng)
 
 Bảng này lưu trữ thông tin về tất cả người dùng đăng ký trên hệ thống.
@@ -120,7 +119,7 @@ Bảng này lưu trữ tất cả các bình luận của người dùng cho cá
 
 **Chi tiết các bước:**
 
-#### a. Thêm Bình luận (`ProfileController@storeComment`)
+#### Thêm Bình luận (`ProfileController@storeComment`)
 1.  Yêu cầu được xử lý qua middleware `auth`.
 2.  Xác thực dữ liệu (`$request->validate()`).
 3.  Tạo bình luận (`Comment::create()`), gán `user_id` và `blog_id`.
