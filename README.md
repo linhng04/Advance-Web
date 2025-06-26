@@ -16,6 +16,9 @@ Dự án được phát triển trên nền tảng **PHP 8.1** và **Laravel 10*
 
 ## Các chức năng chính của website
 
+![image](https://github.com/user-attachments/assets/03a8e2a2-2202-4e6d-ad8f-7dfeb85e9cae)
+
+
 Hệ thống được thiết kế để tất cả người dùng đã xác thực đều có thể tham gia vào việc tạo và quản lý nội dung.
 
 *   **Đăng ký & Đăng nhập:** Cung cấp hệ thống xác thực an toàn cho người dùng tạo và truy cập tài khoản.
