@@ -28,6 +28,8 @@ Hệ thống được thiết kế để tất cả người dùng đã xác th�
 *   **Quản lý bình luận cá nhân:** Người dùng có thể xóa các bình luận do chính mình đã viết.
 
 ## Sơ đồ cấu trúc
+![image](https://github.com/user-attachments/assets/3192b83d-7820-475d-9e80-a198c815b7a0)
+
 ### a. Bảng `users` (Người dùng)
 
 Bảng này lưu trữ thông tin về tất cả người dùng đăng ký trên hệ thống.
@@ -63,6 +65,7 @@ Bảng này lưu trữ tất cả các bình luận của người dùng cho cá
 ## Sơ đồ thuật toán
 
 ### Thuật toán Người dùng (User)
+![image](https://github.com/user-attachments/assets/b9fa2c32-2678-48c5-b593-a8fe477c44a4)
 
 **Chi tiết các bước:**
 
@@ -127,3 +130,21 @@ Bảng này lưu trữ tất cả các bình luận của người dùng cho cá
 4.  Chuyển hướng đến trang bài viết (`route('blog.show')`).
 
 ## Giao diện thực tế
+![image](https://github.com/user-attachments/assets/de6c9687-d295-442a-951a-a675b3cef8fe)
+![image](https://github.com/user-attachments/assets/f3461406-821e-4e1a-b9f7-dc4ac4b03da4)
+![image](https://github.com/user-attachments/assets/6d156358-9459-4d1c-b316-d89701554c2d)
+![image](https://github.com/user-attachments/assets/9f5be308-a522-435c-8fae-d1958daf875d)
+![image](https://github.com/user-attachments/assets/532f525e-a182-435a-a4b2-5d8c0c44fb1b)
+![image](https://github.com/user-attachments/assets/1b5205de-ba4d-4c17-81bf-2c57f63db009)
+![image](https://github.com/user-attachments/assets/11a3cac0-c96d-4ec5-ad48-475021570ee0)
+![image](https://github.com/user-attachments/assets/96483b8c-36e7-4ef8-972b-d930ba9bf293)
+![image](https://github.com/user-attachments/assets/12dba1ab-4440-45b2-b819-4fe3e30c48be)
+![image](https://github.com/user-attachments/assets/99e9a5f0-87cb-499b-8396-7a0aae79e9ff)
+
+
+
+
+
+
+
+
