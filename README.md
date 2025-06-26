@@ -92,6 +92,7 @@ Bảng này lưu trữ tất cả các bình luận của người dùng cho cá
 
 ### Thuật toán Bài viết (Blog)
 ![image](https://github.com/user-attachments/assets/d6c64029-8448-4113-b179-10a8a08ad3cb)
+
 **Chi tiết các bước:**
 
 #### a. Thêm Bài viết (`ProfileController@Store`)
