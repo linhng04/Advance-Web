@@ -16,9 +16,6 @@ Dự án được phát triển trên nền tảng **PHP 8.1** và **Laravel 10*
 
 ## Các chức năng chính của website
 
-![image](https://github.com/user-attachments/assets/03a8e2a2-2202-4e6d-ad8f-7dfeb85e9cae)
-
-
 Hệ thống được thiết kế để tất cả người dùng đã xác thực đều có thể tham gia vào việc tạo và quản lý nội dung.
 
 *   **Đăng ký & Đăng nhập:** Cung cấp hệ thống xác thực an toàn cho người dùng tạo và truy cập tài khoản.
@@ -91,7 +88,7 @@ Bảng này lưu trữ tất cả các bình luận của người dùng cho cá
 ---
 
 ### Thuật toán Bài viết (Blog)
-
+![image](https://github.com/user-attachments/assets/d6c64029-8448-4113-b179-10a8a08ad3cb)
 **Chi tiết các bước:**
 
 #### a. Thêm Bài viết (`ProfileController@Store`)
@@ -119,6 +116,7 @@ Bảng này lưu trữ tất cả các bình luận của người dùng cho cá
 ---
 
 ### Thuật toán Bình luận (Comment)
+![image](https://github.com/user-attachments/assets/80d1dd06-0367-4e8a-9351-c58a7e3cba8d)
 
 **Chi tiết các bước:**
 
